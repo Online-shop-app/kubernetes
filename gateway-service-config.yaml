@@ -27,6 +27,14 @@ spec:
           ports:
             - containerPort: 8762
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1"
+            requests:
+              cpu: "0.5"
+          args:
+            - -cpus
+            - "2"
 
 ---
 
@@ -35,6 +43,8 @@ kind: Service
 metadata:
   name: gateway-service
   namespace: development
+  labels:
+    spring-boot: "true"
 spec:
   selector:
     app: gateway-service
