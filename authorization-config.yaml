@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-read-role
-  namespace: development
+  namespace: drone-transport
 rules:
   - apiGroups: [""]
     resources: ["pods", "services", "endpoints"]
@@ -14,11 +14,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cluster-read-role-binding
-  namespace: development
+  namespace: drone-transport
 subjects:
   - kind: ServiceAccount
     name: default
-    namespace: development
+    namespace: drone-transport
 roleRef:
     kind: ClusterRole
     name: cluster-read-role
